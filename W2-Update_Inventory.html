@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W2 — Update Inventory | SmartX Warehouse</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Warehouse navigation">
+        <div>
+          <header class="brand-block">
+            <h2 class="brand-name">SmartX</h2>
+            <p class="brand-role">Warehouse</p>
+            <p class="brand-zone">Zone 4</p>
+          </header>
+
+          <nav class="sidebar-nav">
+            <a class="nav-link" href="W1-Process_Orders.html">
+              <img src="assets/icons/Process Orders Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Orders</span>
+            </a>
+            <a class="nav-link nav-link-active" href="W2-Update_Inventory.html" aria-current="page">
+              <img src="assets/icons/Update Inventory Icon.svg" alt="" aria-hidden="true" />
+              <span>Update Inventory</span>
+            </a>
+            <a class="nav-link" href="W3-Track_Inventory_Stocks.html">
+              <img src="assets/icons/Track Inventory Stocks Icon.svg" alt="" aria-hidden="true" />
+              <span>Track Inventory Stocks</span>
+            </a>
+            <a class="nav-link" href="W4-Process_Returns.html">
+              <img src="assets/icons/Process Returns Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Returns</span>
+            </a>
+          </nav>
+        </div>
+
+        <a class="logout-link" href="login.html">
+          <img src="assets/icons/Logout Icon.svg" alt="" aria-hidden="true" />
+          <span>Logout</span>
+        </a>
+      </aside>
+
+      <div class="app-main">
+        <header class="topbar">
+          <div>
+            <h1>Update Inventory</h1>
+            <p>Adjust stock levels and record manual changes with audit trail.</p>
+          </div>
+          <div class="user-chip">john_wh &bull; Warehouse Operator</div>
+        </header>
+
+        <main class="page-content">
+          <section class="panel-card" aria-labelledby="find-sku-label">
+            <form class="lookup-form" action="#" method="post">
+              <label for="find-sku" id="find-sku-label">Find SKU code</label>
+              <div class="lookup-row">
+                <input id="find-sku" name="find-sku" type="text" value="TSHIRT-BLU-XL" />
+                <button class="btn btn-primary btn-wide btn-uppercase" type="submit">Look Up</button>
+              </div>
+              <small>Coloured t-shirt SKUs only &mdash; matches pick list format.</small>
+            </form>
+          </section>
+
+          <section class="panel-card" aria-labelledby="adjustment-title">
+            <h2 id="adjustment-title">Manual Stock Adjustment</h2>
+
+            <form action="#" method="post">
+              <div class="adjustment-grid">
+                <div class="form-field">
+                  <label for="sku-id">SKU code</label>
+                  <input id="sku-id" name="sku-id" type="text" value="TSHIRT-BLU-XL" readonly />
+                </div>
+
+                <div class="form-field">
+                  <label for="current-stock">Physical stock count</label>
+                  <div class="stock-display" id="current-stock" aria-label="Physical stock count">150</div>
+                </div>
+
+                <div class="form-field">
+                  <label for="adjustment-type">Adjustment Type</label>
+                  <select id="adjustment-type" name="adjustment-type">
+                    <option selected>Add stock</option>
+                    <option>Reduce stock</option>
+                    <option>Set exact count</option>
+                  </select>
+                </div>
+
+                <div class="form-field form-field-design-size">
+                  <span class="field-label">Color &amp; Size</span>
+                  <div class="inline-inputs">
+                    <input id="color" name="color" type="text" value="BLUE" readonly aria-label="color" />
+                    <input id="size" name="size" type="text" value="XL" readonly aria-label="size" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="quantity-change">Quantity Change</label>
+                  <input id="quantity-change" name="quantity-change" type="number" value="5" />
+                </div>
+
+                <div class="form-field">
+                  <label for="reason-change">Reason for Change</label>
+                  <select id="reason-change" name="reason-change">
+                    <option selected>Cycle count correction</option>
+                    <option>Received shipment</option>
+                    <option>Damaged units removed</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="bin-location">Bin location</label>
+                  <input id="bin-location" name="bin-location" type="text" value="A-04-B1" readonly />
+                </div>
+
+                <div class="form-field">
+                  <label for="notes">Notes</label>
+                  <input id="notes" name="notes" type="text" placeholder="Optional note" />
+                </div>
+              </div>
+
+              <div class="form-actions form-actions-right">
+                <button class="btn btn-primary btn-uppercase" type="submit">Update Stock</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="data-card" aria-labelledby="audit-log-title">
+            <div class="table-title table-title-with-action">
+              <span id="audit-log-title">Audit Log &middot; Recent Adjustments</span>
+              <button class="icon-button" type="button" aria-label="Refresh audit log">
+                <img src="assets/icons/Refresh.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">SKU code</th>
+                    <th scope="col">Bin location</th>
+                    <th scope="col">Change</th>
+                    <th scope="col">Physical stock count</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">User ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>28 Mar 2026 14:22</td>
+                    <td>TSHIRT-BLU-XL</td>
+                    <td>A-04-B1</td>
+                    <td>+10</td>
+                    <td>150</td>
+                    <td>Received shipment</td>
+                    <td>102</td>
+                  </tr>
+                  <tr>
+                    <td>27 Mar 2026 09:15</td>
+                    <td>TSHIRT-WHT-L</td>
+                    <td>B-03</td>
+                    <td>-2</td>
+                    <td>18</td>
+                    <td>Damaged units removed</td>
+                    <td>102</td>
+                  </tr>
+                  <tr>
+                    <td>26 Mar 2026 16:40</td>
+                    <td>TSHIRT-NVY-M</td>
+                    <td>C-07</td>
+                    <td>Set to 24</td>
+                    <td>24</td>
+                    <td>Cycle count</td>
+                    <td>102</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <p class="table-more">Showing 1&ndash;3 of 12</p>
+              <button class="table-nav-button" type="button" aria-label="Table navigation">
+                <img src="assets/icons/Table Navigation.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+          </section>
+        </main>
+
+        <footer class="screen-footer">&copy; 2026 SmartX</footer>
+      </div>
+    </div>
+  </body>
+</html>

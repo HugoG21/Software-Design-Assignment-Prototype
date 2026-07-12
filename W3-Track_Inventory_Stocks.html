@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W3 — Track Inventory Stocks | SmartX Warehouse</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Warehouse navigation">
+        <div>
+          <header class="brand-block">
+            <h2 class="brand-name">SmartX</h2>
+            <p class="brand-role">Warehouse</p>
+            <p class="brand-zone">Zone 4</p>
+          </header>
+
+          <nav class="sidebar-nav">
+            <a class="nav-link" href="W1-Process_Orders.html">
+              <img src="assets/icons/Process Orders Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Orders</span>
+            </a>
+            <a class="nav-link" href="W2-Update_Inventory.html">
+              <img src="assets/icons/Update Inventory Icon.svg" alt="" aria-hidden="true" />
+              <span>Update Inventory</span>
+            </a>
+            <a class="nav-link nav-link-active" href="W3-Track_Inventory_Stocks.html" aria-current="page">
+              <img src="assets/icons/Track Inventory Stocks Icon.svg" alt="" aria-hidden="true" />
+              <span>Track Inventory Stocks</span>
+            </a>
+            <a class="nav-link" href="W4-Process_Returns.html">
+              <img src="assets/icons/Process Returns Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Returns</span>
+            </a>
+          </nav>
+        </div>
+
+        <a class="logout-link" href="login.html">
+          <img src="assets/icons/Logout Icon.svg" alt="" aria-hidden="true" />
+          <span>Logout</span>
+        </a>
+      </aside>
+
+      <div class="app-main">
+        <header class="topbar">
+          <div>
+            <h1>Track Inventory Stocks</h1>
+            <p>View stock by SKU and bin. Scan barcodes and log damaged goods.</p>
+          </div>
+          <div class="user-chip">john_wh &bull; Warehouse Operator</div>
+        </header>
+
+        <section class="stats-grid stats-grid-three" aria-label="Inventory metrics">
+          <article class="stat-card">
+            <span class="stat-label">SKUs tracked</span>
+            <strong class="stat-value">3,600</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Low stock</span>
+            <strong class="stat-value">142</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Critical</span>
+            <strong class="stat-value">18</strong>
+          </article>
+        </section>
+
+        <main class="page-content">
+          <section class="panel-card" aria-labelledby="scan-search-label">
+            <form action="#" method="post">
+              <label class="search-label" for="scan-search" id="scan-search-label">Scan or search SKU code</label>
+              <div class="search-row">
+                <input
+                  id="scan-search"
+                  name="scan-search"
+                  type="text"
+                  placeholder="Scan barcode or enter TSHIRT-BLU-XL"
+                />
+                <button class="btn btn-secondary" type="submit">Scan</button>
+                <select id="status-filter" name="status-filter" aria-label="Filter by status">
+                  <option selected>All statuses</option>
+                  <option>Low</option>
+                  <option>Critical</option>
+                  <option>OK</option>
+                </select>
+              </div>
+            </form>
+          </section>
+
+          <section class="data-card" aria-labelledby="stock-levels-title">
+            <div class="table-title" id="stock-levels-title">Stock levels by SKU</div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">SKU code</th>
+                    <th scope="col">Bin location</th>
+                    <th scope="col">Physical stock count</th>
+                    <th scope="col">Safety stock threshold</th>
+                    <th scope="col">Stock status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TSHIRT-BLU-XL</td>
+                    <td>A-04-B1</td>
+                    <td>150</td>
+                    <td>20</td>
+                    <td><span class="status-tag">OK</span></td>
+                  </tr>
+                  <tr>
+                    <td>TSHIRT-WHT-L</td>
+                    <td>B-03</td>
+                    <td>18</td>
+                    <td>40</td>
+                    <td><span class="status-tag">Low</span></td>
+                  </tr>
+                  <tr>
+                    <td>TSHIRT-NVY-M</td>
+                    <td>C-07</td>
+                    <td>8</td>
+                    <td>35</td>
+                    <td><span class="status-tag status-tag-dark">Critical</span></td>
+                  </tr>
+                  <tr>
+                    <td>TSHIRT-BLK-M</td>
+                    <td>A-08</td>
+                    <td>156</td>
+                    <td>45</td>
+                    <td><span class="status-tag">OK</span></td>
+                  </tr>
+                  <tr>
+                    <td>TSHIRT-GRY-S</td>
+                    <td>D-14</td>
+                    <td>210</td>
+                    <td>60</td>
+                    <td><span class="status-tag">OK</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <p class="table-more">Showing 1&ndash;5 of 142</p>
+              <button class="table-nav-button" type="button" aria-label="Table navigation">
+                <img src="assets/icons/Table Navigation.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+          </section>
+
+          <section class="detail-card detail-card-dashed" aria-labelledby="damage-title">
+            <h2 id="damage-title">Flag Damaged Inventory</h2>
+            <p>Damaged stock is removed from physical stock count and recorded in the audit log.</p>
+
+            <form action="#" method="post">
+              <div class="form-grid form-grid-three">
+                <div class="form-field">
+                  <label for="damage-sku">SKU code</label>
+                  <input id="damage-sku" name="damage-sku" type="text" value="TSHIRT-NVY-M" />
+                </div>
+
+                <div class="form-field">
+                  <label for="damage-qty">Quantity</label>
+                  <input id="damage-qty" name="damage-qty" type="number" value="2" />
+                </div>
+
+                <div class="form-field">
+                  <label for="damage-reason">Reason</label>
+                  <select id="damage-reason" name="damage-reason">
+                    <option selected>Printing defect</option>
+                    <option>Stain</option>
+                    <option>Torn packaging</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions form-actions-right">
+                <button class="btn btn-primary" type="submit">Flag Damaged Inventory</button>
+              </div>
+            </form>
+          </section>
+        </main>
+
+        <footer class="screen-footer">&copy; 2026 SmartX</footer>
+      </div>
+    </div>
+  </body>
+</html>

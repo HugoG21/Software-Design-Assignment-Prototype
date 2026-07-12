@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W4 — Process Returns | SmartX Warehouse</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Warehouse navigation">
+        <div>
+          <header class="brand-block">
+            <h2 class="brand-name">SmartX</h2>
+            <p class="brand-role">Warehouse</p>
+            <p class="brand-zone">Zone 4</p>
+          </header>
+
+          <nav class="sidebar-nav">
+            <a class="nav-link" href="W1-Process_Orders.html">
+              <img src="assets/icons/Process Orders Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Orders</span>
+            </a>
+            <a class="nav-link" href="W2-Update_Inventory.html">
+              <img src="assets/icons/Update Inventory Icon.svg" alt="" aria-hidden="true" />
+              <span>Update Inventory</span>
+            </a>
+            <a class="nav-link" href="W3-Track_Inventory_Stocks.html">
+              <img src="assets/icons/Track Inventory Stocks Icon.svg" alt="" aria-hidden="true" />
+              <span>Track Inventory Stocks</span>
+            </a>
+            <a class="nav-link nav-link-active" href="W4-Process_Returns.html" aria-current="page">
+              <img src="assets/icons/Process Returns Icon.svg" alt="" aria-hidden="true" />
+              <span>Process Returns</span>
+            </a>
+          </nav>
+        </div>
+
+        <a class="logout-link" href="login.html">
+          <img src="assets/icons/Logout Icon.svg" alt="" aria-hidden="true" />
+          <span>Logout</span>
+        </a>
+      </aside>
+
+      <div class="app-main">
+        <header class="topbar">
+          <div>
+            <h1>Process Returns</h1>
+            <p>Receive buyer returns, verify items, and record refund requests.</p>
+          </div>
+          <div class="user-chip">john_wh &bull; Warehouse Operator</div>
+        </header>
+
+        <section class="stats-grid stats-grid-two" aria-label="Return metrics">
+          <article class="stat-card">
+            <span class="stat-label">Pending returns</span>
+            <strong class="stat-value">7</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Processed today</span>
+            <strong class="stat-value">12</strong>
+          </article>
+        </section>
+
+        <main class="page-content">
+          <section class="data-card" aria-labelledby="pending-returns-title">
+            <div class="table-title" id="pending-returns-title">Pending returns</div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">SKU code</th>
+                    <th scope="col">Ordered quantity</th>
+                    <th scope="col">Return Reason</th>
+                    <th scope="col">Fulfillment status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ORD-2026-7781</td>
+                    <td>TSHIRT-BLU-XL</td>
+                    <td>1</td>
+                    <td>Defective return</td>
+                    <td><span class="status-tag">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>ORD-2026-7782</td>
+                    <td>TSHIRT-WHT-L</td>
+                    <td>1</td>
+                    <td>Buyer remorse</td>
+                    <td><span class="status-tag">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>ORD-2026-7783</td>
+                    <td>TSHIRT-NVY-M</td>
+                    <td>2</td>
+                    <td>Wrong size</td>
+                    <td><span class="status-tag">Inspecting</span></td>
+                  </tr>
+                  <tr>
+                    <td>ORD-2026-7784</td>
+                    <td>TSHIRT-BLK-M</td>
+                    <td>1</td>
+                    <td>Defective return</td>
+                    <td><span class="status-tag status-tag-dark">Processed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <p class="table-more">Showing 1&ndash;4 of 7</p>
+              <button class="table-nav-button" type="button" aria-label="Table navigation">
+                <img src="assets/icons/Table Navigation.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+          </section>
+
+          <section class="detail-card detail-card-dashed" aria-labelledby="process-return-title">
+            <h2 id="process-return-title">Process Return: ORD-2026-7781</h2>
+
+            <div class="return-form-grid">
+              <div class="return-column">
+                <div class="static-field">
+                  <span class="static-label">Order ID</span>
+                  <span class="static-value">ORD-2026-7781</span>
+                </div>
+                <div class="static-field">
+                  <span class="static-label">Order date</span>
+                  <span class="static-value">2026-07-07</span>
+                </div>
+                <div class="static-field">
+                  <span class="static-label">Channel</span>
+                  <span class="static-value">Shopee</span>
+                </div>
+                <div class="static-field">
+                  <span class="static-label">SKU code</span>
+                  <span class="static-value">TSHIRT-BLU-XL &middot; Bin location A-04-B1</span>
+                </div>
+              </div>
+
+              <form class="return-column" action="#" method="post">
+                <div class="form-field">
+                  <label for="return-reason">Return Reason</label>
+                  <select id="return-reason" name="return-reason">
+                    <option selected>Defective return</option>
+                    <option>Buyer remorse</option>
+                    <option>Wrong size</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="condition-notes">Condition Notes</label>
+                  <input
+                    id="condition-notes"
+                    name="condition-notes"
+                    type="text"
+                    value="Stain on print &mdash; item unsellable"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="refund-amount">Refund Amount (RM)</label>
+                  <input id="refund-amount" name="refund-amount" type="text" value="RM 45.00" />
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <div class="button-row button-row-three">
+            <button class="btn btn-primary" type="button">Process Return</button>
+            <button class="btn btn-secondary" type="button">Record Refund Request</button>
+            <button class="btn btn-secondary" type="button">Reject Return</button>
+          </div>
+        </main>
+
+        <footer class="screen-footer">&copy; 2026 SmartX</footer>
+      </div>
+    </div>
+  </body>
+</html>
