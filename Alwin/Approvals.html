@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartX – A5 - Approve Restocking Permissions</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .stat-row.three { grid-template-columns: repeat(3, 1fr); }
+    .header-actions { display: flex; gap: 10px; }
+    .chip-row { padding: 10px 16px 12px; display: flex; gap: 8px; }
+    .appr-table td.num, .appr-table th.num { text-align: left; }
+    .appr-table .check-col { width: 36px; }
+    .appr-table .sku { color: #555; font-size: 12px; }
+    .appr-table .action-cell { text-align: right; white-space: nowrap; }
+    .appr-table .action-cell .btn { margin-left: 6px; }
+    .ratio .have { color: #444; }
+    .ratio strong { color: #111; }
+    input[type="checkbox"] {
+      width: 15px; height: 15px;
+      accent-color: #000000;   /* the checkbox fill color when ticked */
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+                <div class="sidebar-brand">
+                    <h2>SmartX</h2>
+                    <span>Admin</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="Forecast.html">
+                        <img src="images/icons/analytics-icon.svg" alt="Forecast Icon" class="icon">
+                        View Forecast
+                    </a>
+                    <a href="Dashboard.html">
+                        <img src="images/icons/dashboard-icon.svg" alt="Dashboard Icon" class="icon">
+                        View Dashboard
+                    </a>
+                    <a href="Inventory.html">
+                        <img src="images/icons/box-icon.svg" alt="Inventory Icon" class="icon">
+                        Manage Inventory
+                    </a>
+                    <a href="Analytics.html">
+                        <img src="images/icons/book-icon.svg" alt="Profitability Icon" class="icon">
+                        View Profitability Analytics
+                    </a>
+                    <a href="Approvals.html" class="active">
+                        <img src="images/icons/list-icon.svg" alt="Restocking Icon" class="icon">
+                        Approve Restocking Permissions
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <a href="Home.html">
+                        <img src="images/icons/home-icon.svg" alt="Home Icon" class="icon">
+                        Home
+                        </a>
+                    <a href="#">
+                        <img src="images/icons/logout-icon.svg" alt="Logout Icon" class="icon">
+                        Logout
+                    </a>
+                </div>
+            </aside>
+    <div class="main">
+      <header class="topbar">
+        <h1>A5 - Approve Restocking Permissions</h1>
+        <span class="user-badge">Alwin · Owner</span>
+      </header>
+      <div class="content">
+        <p class="page-intro">Review and approve pending restock requests.</p>
+
+        <div class="stat-row three">
+          <div class="stat-card">
+            <div class="stat-label">Pending Approval Requests</div>
+            <div class="stat-value">12 <span class="stat-sub">Active Requests</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Critical SKUs</div>
+            <div class="stat-value">05 <span class="stat-sub">Immediate Action</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Estimated Restock Cost (RM)</div>
+            <div class="stat-value">RM 4,250.00</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Pending Restock Requests</h3>
+            <div class="header-actions">
+              <button class="btn">Reject Selected</button>
+              <button class="btn btn-dark">Approve Selected</button>
+            </div>
+          </div>
+
+          <div class="chip-row">
+            <button class="btn btn-sm">&#9776; Filter</button>
+            <button class="btn btn-sm">&#8645; Sort</button>
+          </div>
+
+          <table class="appr-table">
+            <thead>
+              <tr>
+                <th class="check-col"><input type="checkbox"></th>
+                <th>SKU ID</th>
+                <th>Design Name</th>
+                <th>Color / Size</th>
+                <th>Current / Reorder</th>
+                <th>Suggested</th>
+                <th>Velocity</th>
+                <th>Priority</th>
+                <th style="text-align:right">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" checked></td>
+                <td class="sku">TSH-BLK-M-01</td>
+                <td>Oversized Black</td>
+                <td>Black / M</td>
+                <td class="ratio"><span class="have">12</span> / <strong>50</strong></td>
+                <td>150</td>
+                <td>4.2/day</td>
+                <td><span class="badge badge-grey">CRITICAL</span></td>
+                <td class="action-cell"><button class="btn btn-sm btn-dark">Approve</button><button class="btn btn-sm">Reject</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td class="sku">TSH-WHT-L-02</td>
+                <td>Classic White</td>
+                <td>White / L</td>
+                <td class="ratio"><span class="have">45</span> / <strong>100</strong></td>
+                <td>200</td>
+                <td>3.1/day</td>
+                <td><span class="badge badge-grey">HIGH</span></td>
+                <td class="action-cell"><button class="btn btn-sm btn-dark">Approve</button><button class="btn btn-sm">Reject</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" checked></td>
+                <td class="sku">TSH-NVY-XL-03</td>
+                <td>Navy Pocket</td>
+                <td>Navy / XL</td>
+                <td class="ratio"><span class="have">8</span> / <strong>30</strong></td>
+                <td>50</td>
+                <td>1.8/day</td>
+                <td><span class="badge badge-grey">CRITICAL</span></td>
+                <td class="action-cell"><button class="btn btn-sm btn-dark">Approve</button><button class="btn btn-sm">Reject</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td class="sku">TSH-GRY-S-04</td>
+                <td>Heather Grey</td>
+                <td>Grey / S</td>
+                <td class="ratio"><span class="have">120</span> / 150</td>
+                <td>100</td>
+                <td>2.5/day</td>
+                <td><span class="badge badge-muted">MEDIUM</span></td>
+                <td class="action-cell"><button class="btn btn-sm btn-dark">Approve</button><button class="btn btn-sm">Reject</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" checked></td>
+                <td class="sku">TSH-RED-M-05</td>
+                <td>Slim Red</td>
+                <td>Red / M</td>
+                <td class="ratio"><span class="have">30</span> / <strong>80</strong></td>
+                <td>120</td>
+                <td>2.9/day</td>
+                <td><span class="badge badge-grey">HIGH</span></td>
+                <td class="action-cell"><button class="btn btn-sm btn-dark">Approve</button><button class="btn btn-sm">Reject</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="table-footer">
+            <span>Showing 1-5 of 12 requests</span>
+            <span class="pagination"><button>1</button><button>2</button><button>3</button></span>
+          </div>
+        </div>
+        <div class="content-footer"><span>&copy; 2026 SmartX</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

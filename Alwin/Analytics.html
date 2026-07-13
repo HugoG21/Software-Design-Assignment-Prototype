@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartX- View Profitability Analytics</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .stat-row.four { grid-template-columns: repeat(4, 1fr); }
+    .stat-row.four .stat-value { font-size: 14px; font-weight: 400; }
+    .analytics-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 40px;
+      align-items: start;   
+    }
+    .section-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+    .idx-table th.num, .idx-table td.num { text-align: right; }
+    .side-card { border: 1px solid #cccccc; padding: 20px; margin-bottom: 24px; }
+    .side-card .big { font-size: 24px; font-weight: 700; margin-top: 12px; }
+    .side-card .delta { font-size: 12px; color: #555; font-weight: 400; }
+    .side-card h4 { font-size: 15px; margin-top: 12px; }
+    .side-card .sub { font-size: 11.5px; color: #666; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+                <div class="sidebar-brand">
+                    <h2>SmartX</h2>
+                    <span>Admin</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="Forecast.html">
+                        <img src="images/icons/analytics-icon.svg" alt="Forecast Icon" class="icon">
+                        View Forecast
+                    </a>
+                    <a href="Dashboard.html">
+                        <img src="images/icons/dashboard-icon.svg" alt="Dashboard Icon" class="icon">
+                        View Dashboard
+                    </a>
+                    <a href="Inventory.html">
+                        <img src="images/icons/box-icon.svg" alt="Inventory Icon" class="icon">
+                        Manage Inventory
+                    </a>
+                    <a href="Analytics.html" class="active">
+                        <img src="images/icons/book-icon.svg" alt="Profitability Icon" class="icon">
+                        View Profitability Analytics
+                    </a>
+                    <a href="Approvals.html">
+                        <img src="images/icons/list-icon.svg" alt="Restocking Icon" class="icon">
+                        Approve Restocking Permissions
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <a href="Home.html" class="active">
+                        <img src="images/icons/home-icon.svg" alt="Home Icon" class="icon">
+                        Home
+                        </a>
+                    <a href="#">
+                        <img src="images/icons/logout-icon.svg" alt="Logout Icon" class="icon">
+                        Logout
+                    </a>
+                </div>
+            </aside>
+    <div class="main">
+      <header class="topbar">
+        <h1>A4 - View Profitability Analytics</h1>
+        <span class="user-badge">Alwin · Owner</span>
+      </header>
+      <div class="content">
+        <p class="page-intro">Review historical profitability metrics across active inventory designs.</p>
+
+        <div class="stat-row four">
+          <div class="stat-card"><div class="stat-label">Total Gross Sales (RM)</div><div class="stat-value">RM 142,500.00</div></div>
+          <div class="stat-card"><div class="stat-label">Total Deductions (RM)</div><div class="stat-value">RM 12,840.00</div></div>
+          <div class="stat-card"><div class="stat-label">Net Payout (RM)</div><div class="stat-value">RM 129,660.00</div></div>
+          <div class="stat-card"><div class="stat-label">Avg Profit Per Order (RM)</div><div class="stat-value">RM 32.50</div></div>
+        </div>
+
+        <div class="analytics-layout">
+
+          <div>
+            <div class="section-title">Profitability Index</div>
+            <div class="panel">
+              <table class="idx-table">
+                <thead>
+                  <tr>
+                    <th>SKU ID</th><th>Design Name</th>
+                    <th class="num">Base Price (RM)</th>
+                    <th class="num">Profitability (RM)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>TSH-BLK-M-01</td><td>Classic Solid Tee</td><td class="num">245.00</td><td class="num"><strong>82.50</strong></td></tr>
+                  <tr><td>TSH-WHT-L-01</td><td>Classic Solid Tee</td><td class="num">89.00</td><td class="num"><strong>41.20</strong></td></tr>
+                  <tr><td>TSH-NVY-M-08</td><td>Vintage Pocket Tee</td><td class="num">310.00</td><td class="num"><strong>115.00</strong></td></tr>
+                  <tr><td>TSH-GRY-M-04</td><td>Minimal Graphic Tee</td><td class="num">185.00</td><td class="num"><strong>68.90</strong></td></tr>
+                </tbody>
+              </table>
+              <div class="table-footer">
+                <span>Showing 1-4 of 3600</span>
+                <span class="pagination"><button>&lsaquo;</button><button>&rsaquo;</button></span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="side-card">
+              <div class="stat-label">Avg Margin Per SKU</div>
+              <div class="big">38.4% <span class="delta">&nearr; +2.1% (30d)</span></div>
+            </div>
+            <div class="side-card">
+              <div class="stat-label">Highest Performing Design</div>
+              <h4>Minimal Graphic Tee</h4>
+              <div class="sub">RM 14,250 net profit (30d)</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="content-footer"><span>&copy; 2026 SmartX</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

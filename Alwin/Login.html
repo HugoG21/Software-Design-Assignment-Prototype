@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-body {
+            background-color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            width: 100%;
+            max-width: 320px;
+            padding: 40px 32px;
+        }
+
+        .lc-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .lc-header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111111;
+        }
+
+        .lc-header p {
+            font-size: 12px;
+            color: #666666;
+            margin-top: 8px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #111111;
+            margin-bottom: 6px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 13px;
+            border: 1px solid #d9d9d9;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .field input::placeholder {
+            color: #a3a3a3;
+        }
+
+        .field input:focus {
+            border-color: #111111;
+        }
+
+        .login-btn {
+            width: 100%;
+            margin-top: 16px;
+            display: inline-block;
+            padding: 10px;
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            background-color: #222222;
+        }
+
+        .lc-footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+            text-align: center;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .lc-footer a {
+            color: #111111;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .lc-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .page-footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #555555;
+        }
+
+        .page-footer a {
+            color: #555555;
+            margin-left: 16px;
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="lc-header">
+        <h1>SmartX</h1>
+        <p>Authenticate User</p>
+        </div>
+
+        <form>
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="alwin">
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••">
+            </div>
+
+            <a href="Home.html" class="login-btn">Login &rarr;</a>
+        </form>
+
+        <div class="lc-footer">
+            Internal use only. <a href="#">Contact IT Support</a>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        &copy; 2026 SmartX Admin
+        <a href="#">Privacy</a>
+    </div>
+</body>
+</html>
