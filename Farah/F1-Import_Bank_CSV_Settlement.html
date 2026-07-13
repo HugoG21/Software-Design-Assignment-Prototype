@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartX — Accounts Assistant (Farah)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+  <div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>SmartX</h2>
+        <p>Accounts Assistant</p>
+      </div>
+      <nav class="nav">
+        <div class="nav-item" data-page="f1" onclick="go('f1')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/></svg>
+          <span>Import Bank/CSV Settlement</span>
+        </div>
+        <div class="nav-item" data-page="f2" onclick="go('f2')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M7 8L3 13h8L7 8z"/><path d="M17 8l-4 5h8l-4-5z"/><path d="M5 21h14"/></svg>
+          <span>Reconcile Transactions</span>
+        </div>
+        <div class="nav-item" data-page="f3" onclick="go('f3')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <span>Detect Variances / Flag Unmatched</span>
+        </div>
+        <div class="nav-item" data-page="f4" onclick="go('f4')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>View Reconciliation Dashboard</span>
+        </div>
+        <div class="nav-item" data-page="f5" onclick="go('f5')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+          <span>Generate Financial Report</span>
+        </div>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="logout" onclick="doLogout()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          <span>Logout</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="topbar">
+        <h1 id="pageTitle">F1 — Import Bank/CSV Settlement</h1>
+        <span class="badge-user">Farah · Accounts Assistant</span>
+      </div>
+
+      <div class="content">
+
+        <!-- ============ F1 ============ -->
+        <section class="page active" id="page-f1">
+          <p class="lead">Upload Shopee settlement CSV and Maybank statement for month-end reconciliation.</p>
+          <div class="up-grid">
+            <div class="up-card">
+              <h3>Shopee Settlement</h3>
+              <p class="desc">Parses Shopee settlement CSV</p>
+              <div class="dropzone" onclick="toast('Choose a Shopee settlement CSV to upload')">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.6A5 5 0 0018 7h-1.3A8 8 0 103 15.3"/><path d="M12 12v9"/><path d="M8 16l4-4 4 4"/></svg>
+                Drag and drop or click to browse
+              </div>
+              <button class="btn-block" onclick="toast('Shopee settlement uploaded')">UPLOAD</button>
+            </div>
+            <div class="up-card">
+              <h3>Maybank Statement</h3>
+              <p class="desc">Parses Maybank statement</p>
+              <div class="dropzone" onclick="toast('Choose a Maybank statement to upload')">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg>
+                Drag and drop or click to browse
+              </div>
+              <button class="btn-block" onclick="toast('Maybank statement uploaded')">UPLOAD</button>
+            </div>
+          </div>
+
+          <h2 class="section-title">Imported Files</h2>
+          <div class="tbl head-gray">
+            <table>
+              <thead>
+                <tr>
+                  <th>File Name</th><th>Source</th><th>Records</th><th>Status</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>shopee_settlement_mar_w1.csv</td><td>Shopee CSV</td><td>1,245</td>
+                  <td><span class="chip solid">Completed</span></td><td><span class="link">VIEW</span></td>
+                </tr>
+                <tr>
+                  <td>maybank_may_2026.pdf</td><td>Maybank Statement</td><td>86</td>
+                  <td><span class="chip solid">Completed</span></td><td><span class="link">VIEW</span></td>
+                </tr>
+                <tr>
+                  <td>shopee_settlement_mar_w2.csv</td><td>Shopee CSV</td><td>—</td>
+                  <td class="muted">Processing…</td><td><span class="link">CANCEL</span></td>
+                </tr>
+                <tr>
+                  <td>bad_export.xlsx</td><td>Unknown</td><td>—</td>
+                  <td class="strong">Format Error</td><td>—</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="tfoot-bar">
+              <span>Showing 1–4 of 12</span>
+              <span class="pager"><button>‹</button><button>›</button></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ F2 ============ -->
+        <section class="page" id="page-f2">
+          <p class="lead">Validate net payout and match settlement batches to bank transfers.</p>
+          <div class="two-col">
+            <div class="panel">
+              <p class="eyebrow">Validate Net Payout</p>
+              <div class="kv-row" style="margin-top:16px">
+                <div><div class="k">Settlement Batch ID</div><div class="v">SET-SHP-2026-W23</div></div>
+                <div style="text-align:right"><div class="k">Period</div><div class="v">1 Mar – 15 Mar 2026</div></div>
+              </div>
+              <div style="margin-top:18px" class="k">Batch Net Payout Total</div>
+              <div class="big-amt">RM 28,450.20</div>
+              <div class="divider"></div>
+              <div class="info-line">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><path d="M12 8h.01" stroke-linecap="round"/></svg>
+                Internal batch totals verified.
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-head">
+                <p class="eyebrow">Match Settlement Batches and Bank Transactions</p>
+                <span class="chip outline" style="border-radius:20px">100% match</span>
+              </div>
+              <div class="match-box">
+                <div class="ref">Ref: MBB-TRF-20260322-0091</div>
+                <div class="mini-grid">
+                  <div><div class="k">Date</div><div class="v">22 Mar 2026</div></div>
+                  <div><div class="k">Amount</div><div class="v">RM 28,450.20</div></div>
+                </div>
+              </div>
+              <div class="btn-row">
+                <button class="btn dark" onclick="confirmMatch(this)">CONFIRM MATCH</button>
+                <button class="btn" onclick="toast('Select a bank line from the statement')">SELECT BANK LINE</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="eyebrow" style="margin-bottom:12px">Unmatched Queue (Preview)</p>
+          <div class="tbl">
+            <table>
+              <thead><tr><th>Type</th><th>Reference</th><th>Date</th><th class="num">Amount (RM)</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Settlement</td><td>SET-SHP-2026-W24</td><td>16 Mar 2026</td><td class="num">12,100.50</td><td>Unmatched — Pending bank</td></tr>
+                <tr><td>Bank Credit</td><td>MBB-TRF-20260325-0012</td><td>25 Mar 2026</td><td class="num">5,425.00</td><td>Unmatched — Unassigned</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ============ F3 ============ -->
+        <section class="page" id="page-f3">
+          <p class="lead">Review unmatched items and resolve or alert.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="label">Open Variances</div><div class="val">3</div></div>
+            <div class="stat"><div class="label">Total Unresolved (RM)</div><div class="val sm">RM 17,645.50</div></div>
+            <div class="stat"><div class="label">Unmatched Items</div><div class="val">2</div></div>
+          </div>
+
+          <div class="tbl">
+            <table>
+              <thead>
+                <tr><th>Select</th><th>Variance ID</th><th>Type</th><th>Reference</th><th>Amount (RM)</th><th>Discrepancy</th><th>Status</th></tr>
+              </thead>
+              <tbody id="varTable">
+                <tr data-id="VAR-001" onclick="pickVar(this)" class="clickable">
+                  <td><span class="checkbox"></span></td><td>VAR-001</td><td>Unmatched Settlement</td><td>SET-SHP-2026-W24</td><td>RM 12,100.50</td><td>No bank line found</td><td class="strong">Open</td>
+                </tr>
+                <tr data-id="VAR-002" onclick="pickVar(this)" class="clickable">
+                  <td><span class="checkbox"></span></td><td>VAR-002</td><td>Unmatched Bank Transfer</td><td>MBB-TRF-20260325-0012</td><td>RM 5,425.00</td><td>No settlement found</td><td class="strong">Open</td>
+                </tr>
+                <tr data-id="VAR-003" onclick="pickVar(this)" class="clickable sel">
+                  <td><span class="checkbox checked"></span></td><td>VAR-003</td><td>Timing Difference</td><td>SET-SHP-2026-W23</td><td>RM 120.00</td><td>Prior month voucher</td><td class="strong">Open</td>
+                </tr>
+                <tr data-id="VAR-004" onclick="pickVar(this)" class="clickable">
+                  <td><span class="checkbox"></span></td><td>VAR-004</td><td>Amount Mismatch</td><td>SET-SHP-2026-W22</td><td>RM 45.80</td><td>Fee calculation</td><td class="strong">Resolved</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="resolve">
+            <h4 id="resolveTitle">VAR-003: Timing difference for SET-SHP-2026-W23 (RM 120.00)</h4>
+            <div class="resolve-grid">
+              <div class="fld">
+                <label>Action</label>
+                <select>
+                  <option>Accept timing</option>
+                  <option>Reclassify</option>
+                  <option>Request Shopee review</option>
+                  <option>Write off</option>
+                </select>
+              </div>
+              <div class="fld">
+                <label>Notes</label>
+                <input type="text" placeholder="Enter resolution notes…">
+              </div>
+            </div>
+            <button class="btn dark" onclick="toast('Resolution saved')">Save</button>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn dark" onclick="toast('Manual variance resolution opened')">Manual Variance Resolution</button>
+            <button class="btn" onclick="toast('Variance alert sent to Alwin')">Send Variance Alert</button>
+          </div>
+        </section>
+
+        <!-- ============ F4 ============ -->
+        <section class="page" id="page-f4">
+          <p class="lead">Month-end reconciliation status and reporting actions.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="label">Matched Batches</div><div class="val">5</div></div>
+            <div class="stat"><div class="label">Open Variances</div><div class="val">3</div></div>
+            <div class="stat"><div class="label">Reconciliation Month(s)</div><div class="val sm">Mar 2026</div></div>
+          </div>
+
+          <div class="btn-row" style="margin-bottom:10px">
+            <button class="btn" onclick="toast('Exporting reports to PDF / Excel')">Export Reports to PDF/Excel Sheet</button>
+            <button class="btn" onclick="toast('Returns &amp; refunds categorised')">Categorise Returns &amp; Refunds</button>
+            <button class="btn dark" onclick="toast('Reconciliation report generated')">Generate Reconciliation Report</button>
+          </div>
+          <p class="lead">Summary reflects settlement and bank matching for March 2026.</p>
+
+          <h2 class="section-title">Reconciliation status</h2>
+          <div class="tbl">
+            <table>
+              <thead><tr><th>Settlement Batch</th><th>Period</th><th>Net Payout (RM)</th><th>Bank Ref</th><th>Match Status</th></tr></thead>
+              <tbody>
+                <tr><td>SET-SHP-2026-W23</td><td>1–15 Mar 2026</td><td>RM 28,450.20</td><td>MBB-TRF-20260322-0091</td><td><span class="chip solid">Matched</span></td></tr>
+                <tr><td>SET-SHP-2026-W24</td><td>16–31 Mar 2026</td><td>RM 12,100.50</td><td>—</td><td><span class="chip outline">Unmatched</span></td></tr>
+                <tr><td>SET-SHP-2026-W22</td><td>16–28 Feb 2026</td><td>RM 41,200.00</td><td>MBB-TRF-20260308-0044</td><td><span class="chip solid">Matched</span></td></tr>
+                <tr><td>SET-SHP-2026-W21</td><td>1–15 Feb 2026</td><td>RM 39,880.00</td><td>MBB-TRF-20260220-0088</td><td><span class="chip solid">Matched</span></td></tr>
+              </tbody>
+            </table>
+            <div class="tfoot-bar"><span style="width:100%;text-align:center;font-style:italic">[… more rows]</span></div>
+          </div>
+        </section>
+
+        <!-- ============ F5 ============ -->
+        <section class="page" id="page-f5">
+          <p class="reporting-lbl">Reporting Period</p>
+          <div class="period-row">
+            <select class="select-inline">
+              <option>March 2026</option>
+              <option>February 2026</option>
+              <option>January 2026</option>
+            </select>
+            <span class="hint">Historical data available up to 24 months</span>
+          </div>
+
+          <h2 class="rep-h">Generate Monthly Breakdown Summary</h2>
+          <div class="report-grid">
+            <div class="tbl head-gray breakdown">
+              <table>
+                <thead><tr><th>Line item</th><th class="num">Amount (RM)</th></tr></thead>
+                <tbody class="mono">
+                  <tr><td>Gross sales</td><td class="num">RM 142,500.00</td></tr>
+                  <tr><td>Platform commission</td><td class="num">(RM 7,310.00)</td></tr>
+                  <tr><td>Transaction fees</td><td class="num">(RM 2,130.00)</td></tr>
+                  <tr><td>Shipping subsidy</td><td class="num">(RM 1,420.00)</td></tr>
+                  <tr><td>Voucher subsidy</td><td class="num">(RM 740.00)</td></tr>
+                  <tr><td>Returns &amp; refunds</td><td class="num">(RM 1,240.00)</td></tr>
+                  <tr class="netrow"><td>NET PAYOUT</td><td class="num">RM 129,660.00</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="summary-card">
+              <div class="blk">
+                <div class="lbl">Gross Sales</div>
+                <div class="amt">RM 142,500.00</div>
+              </div>
+              <div class="blk">
+                <div class="lbl">Total Deductions</div>
+                <div class="amt">RM 12,840.00</div>
+                <div class="rule"></div>
+              </div>
+              <div class="blk">
+                <div class="lbl">Net Payout</div>
+                <div class="amt">RM 129,660.00</div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="rep-h">Generate Finance Summary</h2>
+          <div class="finance-box">
+            <div class="fh"><span>Finance summary — March 2026 (for Alwin · Owner)</span><span>⋮</span></div>
+            <p>Net payout RM 129,660.00 after platform fees and subsidies.</p>
+            <p>4 of 5 settlement batches matched to Maybank; <span class="link">1 unmatched (SET-SHP-2026-W24)</span>.</p>
+            <p>3 open variances totaling RM 17,640.50 — see reconciliation dashboard.</p>
+            <p>Returns &amp; refunds RM 1,240.00 categorised for the period.</p>
+            <p>Ramadan peak period — gross sales up vs prior month.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn dark" onclick="toast('Financial report generated')">📄&nbsp; GENERATE</button>
+            <button class="btn" onclick="toast('Exporting PDF / Excel')">⬇&nbsp; EXPORT PDF / EXCEL</button>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="foot"><span class="pill">© 2026 SmartX</span></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+  // open this file on its own page (f1)
+  go('f1');
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartX — Accounts Assistant (Farah)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div id="login">
+  <div class="login-card">
+    <h1>SmartX</h1>
+    <p class="sub">Authenticate User</p>
+    <div class="field">
+      <label for="u">Username</label>
+      <input id="u" type="text" value="farah" placeholder="farah">
+    </div>
+    <div class="field">
+      <label for="p">Password</label>
+      <input id="p" type="password" value="12345678" placeholder="Password">
+    </div>
+    <button class="btn-block" onclick="doLogin()">Login &nbsp;&rarr;</button>
+    <p class="login-note">Internal use only. <b>Contact IT Support</b></p>
+    <p class="login-foot">© 2026 Smartx Admin <span>Privacy</span></p>
+  </div>
+</div>
+
+<script>
+  function doLogin() {
+    window.location.href = 'F1-Import_Bank_CSV_Settlement.html';
+  }
+
+  // allow Enter to log in
+  document.getElementById('p').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+</script>
+</body>
+</html>
